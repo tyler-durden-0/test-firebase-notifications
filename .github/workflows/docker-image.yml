@@ -15,17 +15,17 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Set up Docker Compose
-      run: |
+    - run: |
         sudo apt-get -yqq install docker-compose
       if: startsWith(github.event_name, 'push')
 
     - name: Build and push Docker images
-      run: |
+    - run: |
         docker-compose -f docker-compose.yml build
         docker-compose -f docker-compose.yml push
       if: startsWith(github.event_name, 'push')
 
     - name: Deploy to production
-      run: |
+    - run: |
         docker-compose -f docker-compose.yml up -d
       if: startsWith(github.event_name, 'push')
