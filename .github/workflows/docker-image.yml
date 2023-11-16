@@ -31,3 +31,6 @@ jobs:
 
     - name: List current folder
       run : ls -la
+
+    - name: Docker ps
+      run : docker ps
